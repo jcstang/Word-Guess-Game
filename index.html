@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Word Guess Game</title>
 
-    <!-- reset css -->
-    <link rel="stylesheet" href="reset.css" />
-
     <!-- bootstrap -->
     <link
       rel="stylesheet"
@@ -16,34 +13,39 @@
     />
 
     <!-- main css -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- jquery cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
   </head>
   <body>
     <!-- title of game -->
     <div class="container">
-      <h1>Word guess game!!</h1>
+      <h1 >Word guess game!!</h1>
     </div>
 
     <!-- main game body -->
-    <div class="container">
+    <div class="container main-container">
       <!-- main row -->
       <div class="row">
         <!-- ============================================ -->
         <!-- LEFT SIDE -->
         <!-- ============================================ -->
-        <div class="container col-6">
-          <h1>left side</h1>
+        <div class="container left-side col-6">
+          <h2>left side</h2>
 
           <!-- current word section -->
           <div class="row">
             <div class="container col-12">
-              <h3> Current Word </h3>
+              <h4 class="text-center"> Current Word </h4>
             </div>
           </div>
           <div class="row">
             <div class="container">
               <div class="container col-12">
-                <h3 id="curr-word">_ _ _ _ _ _ _ _ _</h3>
+                <h4 id="curr-word" class="text-center">_ _ _ _ _ _ _ _ _</h4>
               </div>
             </div>
           </div>
@@ -51,13 +53,13 @@
           <!-- Letters already guessed -->
           <div class="row">
             <div class="container col-12">
-              <h3>Letters already guessed</h3>
+              <h4 class="text-center">Letters already guessed</h4>
             </div>
           </div>
           <div class="row">
             <div class="container">
               <div class="container col-12">
-                <h3 id="letters-guessed">a, b, c, d, e</h3>
+                <h4 id="letters-guessed" class="text-center">a, b, c, d, e</h4>
               </div>
             </div>
           </div>
@@ -68,26 +70,26 @@
         <!-- ============================================ -->
         <!-- RIGHT SIDE -->
         <!-- ============================================ -->
-        <div class="container col-6">
-          <h1>right side</h1>
+        <div class="container right-side col-6">
+          <h2>right side</h2>
 
           <!-- user wins -->
           <div class="row">
             <div class="container col-9">
-              <h3>Wins:</h3>
+              <h4>Wins:</h4>
             </div>
             <div class="container col-3">
-              <h3>7</h3>
+              <h4 id="usr-win">7</h4>
             </div>
           </div>
 
           <!-- number of guesses remaining -->
           <div class="row">
             <div class="container col-9">
-              <h3>number of guesses remaining:</h3>
+              <h4>number of guesses remaining:</h4>
             </div>
             <div class="container col-3">
-              <h3>15</h3>
+              <h4 id="num-guess-remain">15</h4>
             </div>
           </div>
 

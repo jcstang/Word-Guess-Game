@@ -1,0 +1,15 @@
+h2 {
+  margin-bottom: 1.5rem;
+}
+
+.main-container {
+  border: 14px dashed black;
+}
+
+.right-side {
+  border-left: 14px dashed black;
+}
+
+.right-side, .left-side {
+  padding: 1.1rem;
+}
