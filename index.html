@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Word Guess Game</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Word Guess Game</title>
+
+    <!-- reset css -->
+    <link rel="stylesheet" href="reset.css" />
+
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+
+    <!-- main css -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- title of game -->
+    <div class="container">
+      <h1>Word guess game!!</h1>
+    </div>
+
+    <!-- main game body -->
+    <div class="container">
+      <!-- main row -->
+      <div class="row">
+        <!-- ============================================ -->
+        <!-- LEFT SIDE -->
+        <!-- ============================================ -->
+        <div class="container col-6">
+          <h1>left side</h1>
+
+          <!-- current word section -->
+          <div class="row">
+            <div class="container col-12">
+              <h3> Current Word </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="container">
+              <div class="container col-12">
+                <h3 id="curr-word">_ _ _ _ _ _ _ _ _</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Letters already guessed -->
+          <div class="row">
+            <div class="container col-12">
+              <h3>Letters already guessed</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="container">
+              <div class="container col-12">
+                <h3 id="letters-guessed">a, b, c, d, e</h3>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- end of left side -->
+
+
+        <!-- ============================================ -->
+        <!-- RIGHT SIDE -->
+        <!-- ============================================ -->
+        <div class="container col-6">
+          <h1>right side</h1>
+
+          <!-- user wins -->
+          <div class="row">
+            <div class="container col-9">
+              <h3>Wins:</h3>
+            </div>
+            <div class="container col-3">
+              <h3>7</h3>
+            </div>
+          </div>
+
+          <!-- number of guesses remaining -->
+          <div class="row">
+            <div class="container col-9">
+              <h3>number of guesses remaining:</h3>
+            </div>
+            <div class="container col-3">
+              <h3>15</h3>
+            </div>
+          </div>
+
+        </div> <!-- end of right side -->
+      </div> <!-- end of main row -->
+
+
+    </div> <!-- end of main body-->
+  </body>
 </html>
