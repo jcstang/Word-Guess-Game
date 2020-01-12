@@ -8,6 +8,12 @@ var numGuessesRemaining = 0;
 var currentWordToGuess = 'Elephant';
 
 
+document.onkeyup = function(event) {
+  console.log('here is the event: ' + event);
+  console.log('here is something else about event: ' + event.key);
+  
+};
+
 
 
 // helpful code from the drink list activity
