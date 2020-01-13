@@ -47,7 +47,8 @@ document.onkeyup = function(event) {
   var upperCaseEvent = event.key.toUpperCase();
   // console.log("here is uppercaseevent: " + upperCaseEvent);
 
-  if (alphabetArray.includes(upperCaseEvent)) {
+  // check for valid alphabet entry
+  if ( alphabetArray.includes(upperCaseEvent) ) {
     console.log('validated guess: ' + event.key);
   }
   
