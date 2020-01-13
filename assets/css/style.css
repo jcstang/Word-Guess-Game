@@ -1,3 +1,11 @@
+/* Style.css
+ * for Word-guess-game
+*/
+
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
 h1 {
   margin-bottom: 1.7rem;
 }
@@ -15,5 +23,5 @@ h2 {
 }
 
 .right-side, .left-side {
-  padding: 1.1rem;
+  padding: 1.5rem;
 }
