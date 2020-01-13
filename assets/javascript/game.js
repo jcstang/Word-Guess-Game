@@ -21,9 +21,6 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
 // ===================================================
 // start of game
 // ===================================================
-// pick a word from a list
-// how many underscores are there?
-// display that number of underscores on screen
 
 startWordGuessGame();
 
@@ -33,13 +30,19 @@ startWordGuessGame();
 // DOM - event listeners
 // ====================================================
 document.onkeyup = function (event) {
+  // check if it was a correct guess
+    // does the guess exist in the currWordToGuessArray???
+  // if correct, score++ and update currentWordToGuess
+  // if wrong guess, add and display chosen letter.
+    // remove a guess availalbe and display guesses left
+  
 
   // checking for valid input 
   if (isValidInput(event.key)) {
 
     lettersGuessedArray.push(event.key);
 
-    //chances left
+    //update chances left. add an end of game message.
     if (numGuessesRemaining > 0) {
       removeOneGuess();
     } else {
@@ -49,15 +52,8 @@ document.onkeyup = function (event) {
     }
   }
 
-  // check if it was a correct guess
-  // if correct, score++ and update currentWordToGuess
-  // if wrong guess, add and display chosen letter.
-  // remove a guess available
-  // display guess available
 
 };
-
-
 
 
 
@@ -109,36 +105,9 @@ function isValidInput(key) {
 }
 
 function startWordGuessGame() {
-
-  changeTextContent('usr-win', howManyWins);
-  changeTextContent('num-guess-remain', numGuessesRemaining);
-  var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
-  console.log("here is wordIndexChoice: " + wordIndexChoice);
-  currentWord = arrayOfWords[wordIndexChoice];
-  console.log("here is currentWord: " + currentWord);
-
-  currWordToGuessArray = currentWord.split('');
-  console.log("here is currentWordBlank: " + currWordToGuessArray);
-
-  for (let i = 0; i < currWordToGuessArray.length; i++) {
-    if (currWordToGuessArray[i] === ' ') {
-      // console.log("hey we got a space at index: " + i);
-      currentWordBlank.push(' ');
-    } else {
-      currentWordBlank.push('_');
-    }
-  
-  }
-
-  //displays the current word array of spaces. currentWordBlank
-  var displayWord = convertArrayToString(currentWordBlank);
-
-  //display the current word to the DOM
-  displayNewPtag('curr-word', displayWord);
-
-}
-
-function startWordGuessGame() {
+  // pick a word from a list
+  // how many underscores are there?
+  // display that number of underscores on screen
 
   changeTextContent('usr-win', howManyWins);
   changeTextContent('num-guess-remain', numGuessesRemaining);
