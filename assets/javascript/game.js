@@ -45,21 +45,32 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
   currWordToGuessArray = currentWord.split('');
   console.log("here is currentWordBlank: " + currWordToGuessArray);
   
+  // converts current word array to an array of spaces
   for (let i = 0; i < currWordToGuessArray.length; i++) {
     if (currWordToGuessArray[i] === ' ') {
-      console.log("hey we got a space at index: " + i);
+      // console.log("hey we got a space at index: " + i);
+      currentWordBlank.push(' ');
+    } else {
+      currentWordBlank.push('_');
     }
 
   }
+  console.log("here is currentWordBlank: " + currentWordBlank);
+
+  //displays the current word array of spaces. currentWordBlank
+  var displayWord = '';
+  for (let i = 0; i < currentWordBlank.length; i++) {
+    displayWord += currentWordBlank[i];
+    
+  }
+  console.log("here is display word: " + displayWord);
+
+  //display the current word to the DOM
+  var newWord = document.createElement("p");
+  newWord.textContent = displayWord;
+  document.getElementById('curr-word').appendChild(newWord);
 
 
-
-// ****** static version - need a looping one
-// display the current word to the DOM
-// var newWord = document.createElement("p");
-// newWord.textContent = currentWordToGuess;
-// // append
-// document.getElementById('curr-word').appendChild(newWord);
 
 
 
