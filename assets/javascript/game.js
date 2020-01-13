@@ -138,11 +138,11 @@ function removeOneGuess() {
 function isValidInput(key) {
   //normalizing input
   var retVal = true;
-  console.log('validated guess: ' + key);
+  // console.log('validated guess: ' + key);
   var upperCaseGuess = key.toUpperCase();
   retVal = alphabetArray.includes(upperCaseGuess);
 
-  console.log("here is retVal: " + retVal);
+  // console.log("here is retVal: " + retVal);
 
   return retVal;
 }
@@ -156,9 +156,9 @@ function startWordGuessGame() {
   changeTextContent('num-guess-remain', numGuessesRemaining);
 
   var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
-  console.log("here is wordIndexChoice: " + wordIndexChoice);
+  // console.log("here is wordIndexChoice: " + wordIndexChoice);
   currentWord = arrayOfWords[wordIndexChoice];
-  console.log("here is currentWord: " + currentWord);
+  //console.log("here is currentWord: " + currentWord);
 
   currWordToGuessArray = currentWord.split('');
   console.log("here is currentWordToGuessArray: " + currWordToGuessArray);
