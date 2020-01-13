@@ -3,9 +3,8 @@
 // game.js
 
 // =========================================
-// game.js
+// global variables
 // =========================================
-// variables
 const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const winCountToReset = 3;
 var arrayOfWords = ['slap bracelets', 'reading rainbow', 'walkman', 'airplane', 'the blues brothers'];
@@ -20,25 +19,22 @@ var lettersGuessedArray = [];
 
 
 
-
-
 // ===================================================
 // start of game
 // ===================================================
-
 startWordGuessGame();
-
 
 
 // ====================================================
 // DOM - event listeners
 // ====================================================
-document.onkeyup = function (event) {
   // check if it was a correct guess
-    // does the guess exist in the currWordToGuessArray???
+  // does the guess exist in the currWordToGuessArray???
   // if correct, score++ and update currentWordToGuess
   // if wrong guess, add and display chosen letter.
-    // remove a guess availalbe and display guesses left
+  // remove a guess availalbe and display guesses left
+// ====================================================
+document.onkeyup = function (event) {
 
   var isValidKeyboardInput = isValidInput(event.key);
   var isUserGuessCorrect = currWordToGuessArray.includes(event.key);
@@ -48,12 +44,11 @@ document.onkeyup = function (event) {
     
 
     if (isUserGuessCorrect) {
-
       changeTextContent('end-of-game',  '');
       console.log('it DOES include the letter: ' + event.key);
+
       updateGuessRemaining();
       
-      // TODO: fill out the underscore array in the correct spot
       for (let i = 0; i < currWordToGuessArray.length; i++) {
         
         if (event.key === currWordToGuessArray[i]) {
@@ -129,7 +124,6 @@ function convertArrayToString(arr) {
     returnWord += arr[i];
 
   }
-  //console.log("convertArrayToString: " + returnWord);
 
   return returnWord;
 
