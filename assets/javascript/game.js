@@ -68,6 +68,8 @@ document.onkeyup = function (event) {
       if (numGuessesRemaining > 0) {
         removeOneGuess();
       } else {
+        // FIXME: End of game comes too late.
+        // 0 guesses left, it lets you guess again
         changeTextContent('end-of-game', 'END OF GAME!!!!!');
         // FIXME: need to work on reseting more things
         // startWordGuessGame();
