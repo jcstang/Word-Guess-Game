@@ -15,6 +15,7 @@ var currentWordBlank = [];
 // var currWordToGuessArray = ['E', 'L', 'E', 'P', 'H', 'A', 'N', 'T'];
 var currWordToGuessArray = [];
 var lettersGuessed = ['A', 'Q', 'E', 'I', 'T'];
+var lettersGuessedArray = [];
 var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 
@@ -30,7 +31,7 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
   // display the number of guess remaining
   changeTextContent('num-guess-remain', numGuessesRemaining);
   //display the letters guessed
-  changeTextContent('letters-guessed', lettersGuessed);
+  // changeTextContent('letters-guessed', lettersGuessed);
 
 
   // TODO: display the underscores
@@ -57,18 +58,12 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
   }
   console.log("here is currentWordBlank: " + currentWordBlank);
 
+
   //displays the current word array of spaces. currentWordBlank
-  var displayWord = '';
-  for (let i = 0; i < currentWordBlank.length; i++) {
-    displayWord += currentWordBlank[i];
-    
-  }
-  console.log("here is display word: " + displayWord);
+  var displayWord = convertArrayToString(currentWordBlank);
 
   //display the current word to the DOM
-  var newWord = document.createElement("p");
-  newWord.textContent = displayWord;
-  document.getElementById('curr-word').appendChild(newWord);
+  displayNewPtag('curr-word', displayWord);
 
 
 
@@ -94,6 +89,13 @@ document.onkeyup = function(event) {
   if ( alphabetArray.includes(upperCaseEvent) ) {
     console.log('validated guess: ' + event.key);
     //TODO: add the letter to letters guessed array. if they win, score++?
+    lettersGuessedArray.push(event.key + ',');
+    // lettersGuessedArray.push(',');
+
+    console.log('lettersGuessArray: ' + lettersGuessedArray);
+    
+    var displayLettersGuessed = convertArrayToString(lettersGuessedArray);
+    changeTextContent('letters-guessed', displayLettersGuessed);
   }
   
   // check if it was a correct guess
@@ -106,4 +108,24 @@ document.onkeyup = function(event) {
 
 function changeTextContent(id, newValue) {
   document.getElementById(id).textContent = newValue;
+}
+
+function displayNewPtag(id, newValue) {
+  var newWord = document.createElement("p");
+  newWord.textContent = newValue;
+  document.getElementById(id).appendChild(newWord);
+}
+
+function convertArrayToString(arr) {
+  //stuff here
+  var returnWord = '';
+  
+  for (let i = 0; i < arr.length; i++) {
+    returnWord += arr[i];
+    
+  }
+  console.log("convertArrayToString: " + returnWord);
+
+  return returnWord;
+
 }
