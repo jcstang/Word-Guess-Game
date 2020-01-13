@@ -35,16 +35,50 @@ document.onkeyup = function (event) {
   // if correct, score++ and update currentWordToGuess
   // if wrong guess, add and display chosen letter.
     // remove a guess availalbe and display guesses left
+
+  var isValidKeyboardInput = isValidInput(event.key);
+  var isUserGuessCorrect = currWordToGuessArray.includes(event.key);
+
+  if (isValidKeyboardInput) {
+    
+    if (isUserGuessCorrect) {
+      console.log('it DOES include the letter: ' + event.key);
+      // TODO: fill out the underscore array in the correct spot
+      // TODO: if all filled out, score++
+    } else {
+      console.log('NO it DOES NOT include the letter: ' + event.key);
+      if (numGuessesRemaining > 0) {
+        removeOneGuess();
+      } else {
+        changeTextContent('end-of-game', 'END OF GAME!!!!!');
+        // FIXME: need to work on reseting more things
+        // startWordGuessGame();
+      }
+    }
+
+  }
   
+
+
 
   // checking for valid input 
   if (isValidInput(event.key)) {
 
     lettersGuessedArray.push(event.key);
 
+    if ( currWordToGuessArray.includes(event.key) ) {
+      console.log('it DOES include the letter: ' + event.key);
+      //TODO: fill out the underscore array in the correct spot
+        // TODO: if all filled out, score++
+    } else {
+      console.log('NO it DOES NOT include the letter: ' + event.key);
+      // TODO: remove from number of guesses left
+      // TODO: if there are no guesses left. END!
+    }
+
     //update chances left. add an end of game message.
     if (numGuessesRemaining > 0) {
-      removeOneGuess();
+      // removeOneGuess();
     } else {
       changeTextContent('end-of-game', 'END OF GAME!!!!!');
       // FIXME: need to work on reseting more things
