@@ -6,6 +6,8 @@
 // game.js
 // =========================================
 // variables
+const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const winCountToReset = 3;
 var arrayOfWords = ['slap bracelets', 'reading rainbow', 'walkman', 'airplane', 'the blues brothers'];
 var howManyWins = 0;
 var numGuessesRemaining = 8;
@@ -15,7 +17,9 @@ var currentWordBlank = [];
 var currWordToGuessArray = [];
 var lettersGuessed = ['A', 'Q', 'E', 'I', 'T'];
 var lettersGuessedArray = [];
-var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+
+
 
 
 // ===================================================
@@ -45,14 +49,7 @@ document.onkeyup = function (event) {
 
     if (isUserGuessCorrect) {
 
-      // if(currentWordBlank.findIndex("-") === -1) {
-      //   //hooray you win!!!
-      //   console.log('you win!!!');
-      // }
-
-      
-      
-      
+      changeTextContent('end-of-game',  '');
       console.log('it DOES include the letter: ' + event.key);
       updateGuessRemaining();
       
@@ -70,6 +67,18 @@ document.onkeyup = function (event) {
       console.log('indexOf ' + currentWordBlank.indexOf('_'));
       if (currentWordBlank.indexOf('_') === -1) {
         console.log('you win!!');
+        changeTextContent('end-of-game',  'YOU Win!');
+        resetGameVariables();
+        startWordGuessGame();
+        
+        howManyWins++;
+
+        if (howManyWins > winCountToReset) {
+          changeTextContent('end-of-game', 'Cool! you have won enough!');
+          howManyWins = 0;
+        }
+        
+        changeTextContent('usr-win', howManyWins);
       }
 
 
@@ -78,8 +87,10 @@ document.onkeyup = function (event) {
     } else {
       lettersGuessedArray.push(event.key);
       console.log('NO it DOES NOT include the letter: ' + event.key);
+
       if (numGuessesRemaining > 0) {
         removeOneGuess();
+
       } else {
         // FIXME: End of game comes too late.
         // 0 guesses left, it lets you guess again
@@ -147,10 +158,23 @@ function isValidInput(key) {
   return retVal;
 }
 
+function resetGameVariables() {
+  numGuessesRemaining = 8;
+  currentWord = '';
+  currentWordBlank = [];
+  currWordToGuessArray = [];
+  lettersGuessedArray = [];
+
+  
+
+}
+
 function startWordGuessGame() {
   // pick a word from a list
   // how many underscores are there?
   // display that number of underscores on screen
+
+  resetGameVariables();
 
   changeTextContent('usr-win', howManyWins);
   changeTextContent('num-guess-remain', numGuessesRemaining);
@@ -160,9 +184,11 @@ function startWordGuessGame() {
   currentWord = arrayOfWords[wordIndexChoice];
   //console.log("here is currentWord: " + currentWord);
 
+  //converts from string to Array
   currWordToGuessArray = currentWord.split('');
   console.log("here is currentWordToGuessArray: " + currWordToGuessArray);
 
+  // fill the currentWordBlank array
   for (let i = 0; i < currWordToGuessArray.length; i++) {
     if (currWordToGuessArray[i] === ' ') {
       // console.log("hey we got a space at index: " + i);
@@ -172,11 +198,10 @@ function startWordGuessGame() {
     }
   
   }
-
   //displays the current word array of spaces. currentWordBlank
+  // display word to the DOM
   var displayWord = convertArrayToString(currentWordBlank);
-
-  //display the current word to the DOM
   displayNewPtag('curr-word', displayWord);
+
 
 }
