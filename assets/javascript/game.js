@@ -39,13 +39,31 @@ document.onkeyup = function (event) {
   var isValidKeyboardInput = isValidInput(event.key);
   var isUserGuessCorrect = currWordToGuessArray.includes(event.key);
 
+
   if (isValidKeyboardInput) {
     
+
     if (isUserGuessCorrect) {
       console.log('it DOES include the letter: ' + event.key);
       // TODO: fill out the underscore array in the correct spot
       // TODO: if all filled out, score++
+      updateGuessRemaining();
+
+    for (let i = 0; i < currWordToGuessArray.length; i++) {
+
+      if (event.key === currWordToGuessArray[i]) {
+        currentWordBlank[i] = event.key;
+      }
+      
+    }
+    console.log("here is currentWordBlank: " + currentWordBlank);
+    //update the view of page
+    changeTextContent('curr-word', convertArrayToString(currentWordBlank) );
+
+
+
     } else {
+      lettersGuessedArray.push(event.key);
       console.log('NO it DOES NOT include the letter: ' + event.key);
       if (numGuessesRemaining > 0) {
         removeOneGuess();
@@ -56,34 +74,6 @@ document.onkeyup = function (event) {
       }
     }
 
-  }
-  
-
-
-
-  // checking for valid input 
-  if (isValidInput(event.key)) {
-
-    lettersGuessedArray.push(event.key);
-
-    if ( currWordToGuessArray.includes(event.key) ) {
-      console.log('it DOES include the letter: ' + event.key);
-      //TODO: fill out the underscore array in the correct spot
-        // TODO: if all filled out, score++
-    } else {
-      console.log('NO it DOES NOT include the letter: ' + event.key);
-      // TODO: remove from number of guesses left
-      // TODO: if there are no guesses left. END!
-    }
-
-    //update chances left. add an end of game message.
-    if (numGuessesRemaining > 0) {
-      // removeOneGuess();
-    } else {
-      changeTextContent('end-of-game', 'END OF GAME!!!!!');
-      // FIXME: need to work on reseting more things
-      // startWordGuessGame();
-    }
   }
 
 
@@ -119,11 +109,15 @@ function convertArrayToString(arr) {
 
 }
 
-function removeOneGuess() {
-  numGuessesRemaining--;
+function updateGuessRemaining() {
   changeTextContent('num-guess-remain', numGuessesRemaining);
   var displayLettersGuessed = convertArrayToString(lettersGuessedArray);
   changeTextContent('letters-guessed', displayLettersGuessed);
+}
+
+function removeOneGuess() {
+  numGuessesRemaining--;
+  updateGuessRemaining();
 }
 
 function isValidInput(key) {
@@ -145,13 +139,14 @@ function startWordGuessGame() {
 
   changeTextContent('usr-win', howManyWins);
   changeTextContent('num-guess-remain', numGuessesRemaining);
+
   var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
   console.log("here is wordIndexChoice: " + wordIndexChoice);
   currentWord = arrayOfWords[wordIndexChoice];
   console.log("here is currentWord: " + currentWord);
 
   currWordToGuessArray = currentWord.split('');
-  console.log("here is currentWordBlank: " + currWordToGuessArray);
+  console.log("here is currentWordToGuessArray: " + currWordToGuessArray);
 
   for (let i = 0; i < currWordToGuessArray.length; i++) {
     if (currWordToGuessArray[i] === ' ') {
