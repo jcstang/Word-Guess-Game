@@ -44,21 +44,34 @@ document.onkeyup = function (event) {
     
 
     if (isUserGuessCorrect) {
+
+      // if(currentWordBlank.findIndex("-") === -1) {
+      //   //hooray you win!!!
+      //   console.log('you win!!!');
+      // }
+
+      
+      
+      
       console.log('it DOES include the letter: ' + event.key);
-      // TODO: fill out the underscore array in the correct spot
-      // TODO: if all filled out, score++
       updateGuessRemaining();
-
-    for (let i = 0; i < currWordToGuessArray.length; i++) {
-
-      if (event.key === currWordToGuessArray[i]) {
-        currentWordBlank[i] = event.key;
+      
+      // TODO: fill out the underscore array in the correct spot
+      for (let i = 0; i < currWordToGuessArray.length; i++) {
+        
+        if (event.key === currWordToGuessArray[i]) {
+          currentWordBlank[i] = event.key;
+        }
+        
       }
       
-    }
-    console.log("here is currentWordBlank: " + currentWordBlank);
-    //update the view of page
-    changeTextContent('curr-word', convertArrayToString(currentWordBlank) );
+      //update the view of page
+      changeTextContent('curr-word', convertArrayToString(currentWordBlank) );
+      console.log('indexOf ' + currentWordBlank.indexOf('_'));
+      if (currentWordBlank.indexOf('_') === -1) {
+        console.log('you win!!');
+      }
+
 
 
 
@@ -105,7 +118,7 @@ function convertArrayToString(arr) {
     returnWord += arr[i];
 
   }
-  console.log("convertArrayToString: " + returnWord);
+  //console.log("convertArrayToString: " + returnWord);
 
   return returnWord;
 
