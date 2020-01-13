@@ -25,3 +25,8 @@ h2 {
 .right-side, .left-side {
   padding: 1.5rem;
 }
+
+#end-of-game {
+  font-size: x-large;
+  color: orangered;
+}

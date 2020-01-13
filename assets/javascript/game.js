@@ -9,7 +9,6 @@
 var arrayOfWords = ['slap bracelets', 'reading rainbow', 'walkman', 'airplane', 'the blues brothers'];
 var howManyWins = 0;
 var numGuessesRemaining = 8;
-//var currentWordToGuess = 'Elephant';
 var currentWord = '';
 var currentWordBlank = [];
 // var currWordToGuessArray = ['E', 'L', 'E', 'P', 'H', 'A', 'N', 'T'];
@@ -19,9 +18,9 @@ var lettersGuessedArray = [];
 var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 
-// =====================
+// ===================================================
 // start of game
-// =====================
+// ===================================================
   // pick a word from a list
   // how many underscores are there?
   // display that number of underscores on screen
@@ -69,17 +68,10 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
 
 
 
-
-
-
-
-// =========================================
+// ====================================================
 // DOM - event listeners
-// =========================================
+// ====================================================
 document.onkeyup = function(event) {
-  // console.log('here is something else about event: ' + event.key);
-
-  // user has now pressed a key
 
   //check if it was a alphabet entry
   var upperCaseEvent = event.key.toUpperCase();
@@ -88,14 +80,16 @@ document.onkeyup = function(event) {
   // check for valid alphabet entry
   if ( alphabetArray.includes(upperCaseEvent) ) {
     console.log('validated guess: ' + event.key);
+    //FIXME: repeating letters showing up.
     //TODO: add the letter to letters guessed array. if they win, score++?
-    lettersGuessedArray.push(event.key + ',');
-    // lettersGuessedArray.push(',');
-
-    console.log('lettersGuessArray: ' + lettersGuessedArray);
+    lettersGuessedArray.push(event.key);
     
-    var displayLettersGuessed = convertArrayToString(lettersGuessedArray);
-    changeTextContent('letters-guessed', displayLettersGuessed);
+    //chances left
+    if (numGuessesRemaining > 0) {
+      updateGuessRemaining();
+    } else {
+      changeTextContent('end-of-game', 'END OF GAME!!!!!');
+    }
   }
   
   // check if it was a correct guess
@@ -106,6 +100,13 @@ document.onkeyup = function(event) {
 
 };
 
+
+
+
+
+// ===========================================================
+// custom Functions 
+// ===========================================================
 function changeTextContent(id, newValue) {
   document.getElementById(id).textContent = newValue;
 }
@@ -128,4 +129,11 @@ function convertArrayToString(arr) {
 
   return returnWord;
 
+}
+
+function updateGuessRemaining() {
+  numGuessesRemaining--;
+  changeTextContent('num-guess-remain', numGuessesRemaining);
+  var displayLettersGuessed = convertArrayToString(lettersGuessedArray);
+  changeTextContent('letters-guessed', displayLettersGuessed);
 }
