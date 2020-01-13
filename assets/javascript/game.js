@@ -11,13 +11,13 @@ var currentWordToGuess = 'Elephant';
 // TODO: pick a word
 // TODO: display the underscores 
 
-var currWordDiv = document.getElementById('curr-word');
+//var currWordDiv = document.getElementById('curr-word');
 console.log('here is div: ' + document.getElementById('curr-word'));
 
 var newWord = document.createElement("p");
 newWord.textContent = currentWordToGuess;
 console.log(newWord);
-currWordDiv.appendChild(newWord);
+//currWordDiv.appendChild(newWord);
 // newWord.textContent = currentWordToGuess;
 // currWordDiv.appendChild(newWord);
 
