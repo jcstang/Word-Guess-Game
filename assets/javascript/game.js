@@ -21,31 +21,64 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
 // ===================================================
 // start of game
 // ===================================================
-  // pick a word from a list
-  // how many underscores are there?
-  // display that number of underscores on screen
+// pick a word from a list
+// how many underscores are there?
+// display that number of underscores on screen
 
-  // display the score to the DOM
+startWordGuessGame();
+
+// display the score to the DOM
+// changeTextContent('usr-win', howManyWins);
+// display the number of guess remaining
+// changeTextContent('num-guess-remain', numGuessesRemaining);
+//display the letters guessed
+// changeTextContent('letters-guessed', lettersGuessed);
+
+
+// TODO: display the underscores
+// pick a word from list
+// var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
+// console.log("here is wordIndexChoice: " + wordIndexChoice);
+// currentWord = arrayOfWords[wordIndexChoice];
+// console.log("here is currentWord: " + currentWord);
+
+// count and fill the underscore thing
+// string into an array
+// currWordToGuessArray = currentWord.split('');
+// console.log("here is currentWordBlank: " + currWordToGuessArray);
+
+// // converts current word array to an array of spaces
+// for (let i = 0; i < currWordToGuessArray.length; i++) {
+//   if (currWordToGuessArray[i] === ' ') {
+//     // console.log("hey we got a space at index: " + i);
+//     currentWordBlank.push(' ');
+//   } else {
+//     currentWordBlank.push('_');
+//   }
+
+// }
+//console.log("here is currentWordBlank: " + currentWordBlank);
+
+
+//displays the current word array of spaces. currentWordBlank
+// var displayWord = convertArrayToString(currentWordBlank);
+
+// //display the current word to the DOM
+// displayNewPtag('curr-word', displayWord);
+
+
+function startWordGuessGame() {
+
   changeTextContent('usr-win', howManyWins);
-  // display the number of guess remaining
   changeTextContent('num-guess-remain', numGuessesRemaining);
-  //display the letters guessed
-  // changeTextContent('letters-guessed', lettersGuessed);
-
-
-  // TODO: display the underscores
-    // pick a word from list
-  var wordIndexChoice = Math.floor( Math.random() * arrayOfWords.length );
+  var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
   console.log("here is wordIndexChoice: " + wordIndexChoice);
-  currentWord = arrayOfWords[ wordIndexChoice ];
+  currentWord = arrayOfWords[wordIndexChoice];
   console.log("here is currentWord: " + currentWord);
 
-  // count and fill the underscore thing
-  // string into an array
   currWordToGuessArray = currentWord.split('');
   console.log("here is currentWordBlank: " + currWordToGuessArray);
-  
-  // converts current word array to an array of spaces
+
   for (let i = 0; i < currWordToGuessArray.length; i++) {
     if (currWordToGuessArray[i] === ' ') {
       // console.log("hey we got a space at index: " + i);
@@ -53,10 +86,8 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
     } else {
       currentWordBlank.push('_');
     }
-
+  
   }
-  console.log("here is currentWordBlank: " + currentWordBlank);
-
 
   //displays the current word array of spaces. currentWordBlank
   var displayWord = convertArrayToString(currentWordBlank);
@@ -64,6 +95,7 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
   //display the current word to the DOM
   displayNewPtag('curr-word', displayWord);
 
+}
 
 
 
@@ -71,30 +103,26 @@ var alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
 // ====================================================
 // DOM - event listeners
 // ====================================================
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
 
-  //check if it was a alphabet entry
-  var upperCaseEvent = event.key.toUpperCase();
-  // console.log("here is uppercaseevent: " + upperCaseEvent);
+  // checking for valid input 
+  if (isValidInput(event.key)) {
 
-  // check for valid alphabet entry
-  if ( alphabetArray.includes(upperCaseEvent) ) {
-    console.log('validated guess: ' + event.key);
-    //FIXME: repeating letters showing up.
-    //TODO: add the letter to letters guessed array. if they win, score++?
     lettersGuessedArray.push(event.key);
-    
+
     //chances left
     if (numGuessesRemaining > 0) {
-      updateGuessRemaining();
+      removeOneGuess();
     } else {
       changeTextContent('end-of-game', 'END OF GAME!!!!!');
+      // FIXME: need to work on reseting more things
+      // startWordGuessGame();
     }
   }
-  
+
   // check if it was a correct guess
-    // if correct, score++ and update currentWordToGuess
-    // if wrong guess, add and display chosen letter.
+  // if correct, score++ and update currentWordToGuess
+  // if wrong guess, add and display chosen letter.
   // remove a guess available
   // display guess available
 
@@ -120,10 +148,10 @@ function displayNewPtag(id, newValue) {
 function convertArrayToString(arr) {
   //stuff here
   var returnWord = '';
-  
+
   for (let i = 0; i < arr.length; i++) {
     returnWord += arr[i];
-    
+
   }
   console.log("convertArrayToString: " + returnWord);
 
@@ -131,9 +159,51 @@ function convertArrayToString(arr) {
 
 }
 
-function updateGuessRemaining() {
+function removeOneGuess() {
   numGuessesRemaining--;
   changeTextContent('num-guess-remain', numGuessesRemaining);
   var displayLettersGuessed = convertArrayToString(lettersGuessedArray);
   changeTextContent('letters-guessed', displayLettersGuessed);
+}
+
+function isValidInput(key) {
+  //normalizing input
+  var retVal = true;
+  console.log('validated guess: ' + key);
+  var upperCaseGuess = key.toUpperCase();
+  retVal = alphabetArray.includes(upperCaseGuess);
+
+  console.log("here is retVal: " + retVal);
+
+  return retVal;
+}
+
+function startWordGuessGame() {
+
+  changeTextContent('usr-win', howManyWins);
+  changeTextContent('num-guess-remain', numGuessesRemaining);
+  var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
+  console.log("here is wordIndexChoice: " + wordIndexChoice);
+  currentWord = arrayOfWords[wordIndexChoice];
+  console.log("here is currentWord: " + currentWord);
+
+  currWordToGuessArray = currentWord.split('');
+  console.log("here is currentWordBlank: " + currWordToGuessArray);
+
+  for (let i = 0; i < currWordToGuessArray.length; i++) {
+    if (currWordToGuessArray[i] === ' ') {
+      // console.log("hey we got a space at index: " + i);
+      currentWordBlank.push(' ');
+    } else {
+      currentWordBlank.push('_');
+    }
+  
+  }
+
+  //displays the current word array of spaces. currentWordBlank
+  var displayWord = convertArrayToString(currentWordBlank);
+
+  //display the current word to the DOM
+  displayNewPtag('curr-word', displayWord);
+
 }
