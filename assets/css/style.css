@@ -4,6 +4,7 @@
 
 body {
   font-family: 'Press Start 2P', cursive;
+  background-color: black;
 }
 
 h1 {
@@ -15,11 +16,12 @@ h2 {
 }
 
 .main-container {
-  border: 14px dashed black;
+  border: 14px dashed whitesmoke;
+  color: whitesmoke;
 }
 
 .right-side {
-  border-left: 14px dashed black;
+  border-left: 14px dashed whitesmoke;
 }
 
 .right-side, .left-side {
@@ -29,4 +31,9 @@ h2 {
 #end-of-game {
   font-size: x-large;
   color: orangered;
+}
+
+.head-container {
+  background-image: url('../images/80s-theme.svg');
+  height: 300px;
 }

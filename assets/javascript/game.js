@@ -117,7 +117,6 @@ function displayNewPtag(id, newValue) {
 }
 
 function convertArrayToString(arr) {
-  //stuff here
   var returnWord = '';
 
   for (let i = 0; i < arr.length; i++) {
@@ -143,11 +142,8 @@ function removeOneGuess() {
 function isValidInput(key) {
   //normalizing input
   var retVal = true;
-  // console.log('validated guess: ' + key);
   var upperCaseGuess = key.toUpperCase();
   retVal = alphabetArray.includes(upperCaseGuess);
-
-  // console.log("here is retVal: " + retVal);
 
   return retVal;
 }
@@ -174,9 +170,7 @@ function startWordGuessGame() {
   changeTextContent('num-guess-remain', numGuessesRemaining);
 
   var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
-  // console.log("here is wordIndexChoice: " + wordIndexChoice);
   currentWord = arrayOfWords[wordIndexChoice];
-  //console.log("here is currentWord: " + currentWord);
 
   //converts from string to Array
   currWordToGuessArray = currentWord.split('');
@@ -185,7 +179,6 @@ function startWordGuessGame() {
   // fill the currentWordBlank array
   for (let i = 0; i < currWordToGuessArray.length; i++) {
     if (currWordToGuessArray[i] === ' ') {
-      // console.log("hey we got a space at index: " + i);
       currentWordBlank.push(' ');
     } else {
       currentWordBlank.push('_');
@@ -193,7 +186,6 @@ function startWordGuessGame() {
   
   }
   //displays the current word array of spaces. currentWordBlank
-  // display word to the DOM
   var displayWord = convertArrayToString(currentWordBlank);
   displayNewPtag('curr-word', displayWord);
 
