@@ -16,12 +16,14 @@ h2 {
 }
 
 .main-container {
-  border: 14px dashed whitesmoke;
+  border: 12px dashed whitesmoke;
   color: whitesmoke;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .right-side {
-  border-left: 14px dashed whitesmoke;
+  border-left: 12px dashed whitesmoke;
 }
 
 .right-side, .left-side {
@@ -34,6 +36,16 @@ h2 {
 }
 
 .head-container {
-  background-image: url('../images/80s-theme.svg');
+  background-image: url('../images/word-guess-80v2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 300px;
+  margin-bottom: 2rem;
+}
+
+.choose-ltr {
+  /* margin top */
+  margin-top: 3rem;
+  margin-bottom: 0;
+  font-size: x-small;
 }
