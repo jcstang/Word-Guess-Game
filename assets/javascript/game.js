@@ -106,10 +106,13 @@ document.onkeyup = function (event) {
 // ===========================================================
 // custom Functions 
 // ===========================================================
+
+// used to make reading code easier for me. 
 function changeTextContent(id, newValue) {
   document.getElementById(id).textContent = newValue;
 }
 
+// adds a new p tag to the id you give it
 function displayNewPtag(id, newValue) {
   var newWord = document.createElement("p");
   newWord.textContent = newValue;
@@ -128,6 +131,7 @@ function convertArrayToString(arr) {
 
 }
 
+// helps update the number of guesses in the view
 function updateGuessRemaining() {
   changeTextContent('num-guess-remain', numGuessesRemaining);
   var displayLettersGuessed = convertArrayToString(lettersGuessedArray);
@@ -139,15 +143,30 @@ function removeOneGuess() {
   updateGuessRemaining();
 }
 
+// checks that user pressed a letter key.
 function isValidInput(key) {
-  //normalizing input
   var retVal = true;
+  //normalizing input
   var upperCaseGuess = key.toUpperCase();
   retVal = alphabetArray.includes(upperCaseGuess);
 
   return retVal;
 }
 
+function fillOutBlankArray() {
+  //working with global variables
+  for (let i = 0; i < currWordToGuessArray.length; i++) {
+    if (currWordToGuessArray[i] === ' ') {
+      currentWordBlank.push(' ');
+    } else {
+      currentWordBlank.push('_');
+    }
+  
+  }
+
+}
+
+// resets the board. except the score. 
 function resetGameVariables() {
   numGuessesRemaining = 8;
   currentWord = '';
@@ -155,9 +174,8 @@ function resetGameVariables() {
   currWordToGuessArray = [];
   lettersGuessedArray = [];
 
-  
-
 }
+
 
 function startWordGuessGame() {
   // pick a word from a list
@@ -169,6 +187,7 @@ function startWordGuessGame() {
   changeTextContent('usr-win', howManyWins);
   changeTextContent('num-guess-remain', numGuessesRemaining);
 
+  // pick an index at random
   var wordIndexChoice = Math.floor(Math.random() * arrayOfWords.length);
   currentWord = arrayOfWords[wordIndexChoice];
 
@@ -177,17 +196,10 @@ function startWordGuessGame() {
   console.log("here is currentWordToGuessArray: " + currWordToGuessArray);
 
   // fill the currentWordBlank array
-  for (let i = 0; i < currWordToGuessArray.length; i++) {
-    if (currWordToGuessArray[i] === ' ') {
-      currentWordBlank.push(' ');
-    } else {
-      currentWordBlank.push('_');
-    }
-  
-  }
+  fillOutBlankArray();
+
   //displays the current word array of spaces. currentWordBlank
   var displayWord = convertArrayToString(currentWordBlank);
   displayNewPtag('curr-word', displayWord);
-
 
 }
