@@ -95,7 +95,7 @@ document.onkeyup = function (event) {
       }
     }
 
-  }
+  } // end of valid keyboard input
 
 
 };
