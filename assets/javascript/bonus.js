@@ -62,18 +62,30 @@ var wordGuessGame = {
 
   resetGameVariables: function () {
     //code
+    wordGuessGame["number of guesses remain"] = 8;
+    wordGuessGame.currentWord = '';
+    this.currentWordBlankArray = [];
+    this.currentWordToGuessArray = [];
+    this.lettersGuessedArray = [];
+    this.didUserWin = false;
   },
 
   isValidInput: function () {
     // code
   },
 
-  changeTextContentOfId: function () {
-    //code here
+  changeTextContentOfId: function(id, newValue) {
+    document.getElementById(id).textContent = newValue;
   },
 
-  convertArrayToString: function () {
-    //code
+  convertArrayToString: function(arr) {
+    var returnWord = '';
+
+    for (let i = 0; i < arr.length; i++) {
+      returnWord += arr[i];
+    }
+
+    return returnWord
   },
 
   displayNewPtag: function () {
@@ -81,7 +93,9 @@ var wordGuessGame = {
   },
 
   updateGuessRemaining: function () {
-    //stuff
+    this.changeTextContentOfId('num-guess-remain', numGuessesRemaining);
+    var displayLettersGuessed = this.convertArrayToString(this.lettersGuessedArray);
+    this.changeTextContentOfId('letters-guessed', displayLettersGuessed);
   },
 
   removeOneGuess: function () {
@@ -91,6 +105,6 @@ var wordGuessGame = {
   fillOutBlankArray: function () {
     // code here
   }
-  
+
 
 };
