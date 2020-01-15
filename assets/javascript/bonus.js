@@ -1,5 +1,4 @@
 
-
 // board game
 
 var wordGuessGame = {
