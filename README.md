@@ -30,20 +30,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/jcstang/Word-Guess-Game">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
   <h3 align="center">Word Guess Game - 80s style</h3>
 
   <p align="center">
-    See if you can guess all of the correct letters. 
-    <br />
-    <a href="https://github.com/github_username/Word-Guess-Game">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/Word-Guess-Game/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/Word-Guess-Game/issues">Request Feature</a>
+    See if you can guess all of the correct letters.
   </p>
 </p>
 
@@ -69,19 +59,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
+This app solves this problem. Add a high-level overview of how to app is organzied.
 
 
 ### Built With
 
 * []()
-* []()
-* []()
-
 
 
 <!-- GETTING STARTED -->
